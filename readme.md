@@ -18,3 +18,13 @@ pip install Flask
 ```python
 pip freeze
 pip freeze > paquetes.txt
+```
+
+#### En caso de recrear el proyecto
+```
+pip install -r paquetes.txt
+```
+#### traer cambios del repositorio
+ ```
+ git pull origin main
+ ```
