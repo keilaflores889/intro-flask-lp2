@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Holis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
 </head>
 <body>
+   
     <h3>Holis desde el servidor</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quasi sit quis, neque vero quisquam a saepe architecto quas. Porro veniam quia facere odit aut inventore harum quibusdam, dolorum et?</p>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae praesentium voluptatem hic repellat in. Veniam doloremque praesentium atque exercitationem? Optio aliquam autem deleniti debitis consequatur nisi vero fugiat pariatur quibusdam?</p>
+
+    <script src="{{ url_for('static', filename='js/jquery.slim.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
 </body>
 </html>
