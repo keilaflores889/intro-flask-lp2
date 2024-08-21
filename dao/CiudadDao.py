@@ -1,4 +1,5 @@
 # Data access object - DAO
+from flask import current_app as app
 from conexion.Conexion import Conexion
 
 class CiudadDao:
@@ -18,9 +19,15 @@ class CiudadDao:
           #trae datos de db
           lista_ciudades = cur.fetchall()
           #retorno de datos
-          return lista_ciudades
+          lista_ordenada = []
+          for item in lista_ciudades:
+              lista_ordenada.uppend({
+                  "id": item[0],
+                  "descripcion": item[1]
+              })
+          return lista_ordenada
         except con.Error as e:
-            print(e)
+            print(e) 
         finally:
             cur.close()
             con.close()
@@ -45,7 +52,7 @@ class CiudadDao:
 
         #si algo falla aqui
         except con.Error as e:
-            print(e)
+            app.logger.info(e)
             
         #siempre se va a ejecutar
         finally:
