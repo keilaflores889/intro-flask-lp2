@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Holis</title>
+    <title>Ciudades</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
 </head>
 <body>
 
     <div class="container mt-4">
-        <h3>Lista de Ciudades</h3>
+        <h3>Listar Ciudades</h3>
 
          <!-- Boton agregar -->
          <div class="row mb-2">
             <div class="col col-md-4">
-              <button type="button" class="btn btn-primary">Agregar</button>
+              <a href="{{ url_for('ciudades') }}" class="btn btn-primary">Agregar</a>
             </div>
           </div>
           <!--  -->
@@ -32,29 +32,17 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>Asunción</td>
-                          <td>
-                            <div class="row">
-                              <div class="col col-md-2">
-                                <button type="button" class="btn btn-primary">Editar</button>
-                              </div>
-                              <div class="col col-md-2">
-                                <button type="button" class="btn btn-danger">Eliminar</button>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        {% for item in lista_ciudades %}
+                        {% for item in lista_ciudades %} 
                         <tr>
                           <td>{{ item['descripcion'] }}</td>
                           <td>
                             <div class="row">
                               <div class="col col-md-2">
-                                <button type="button" class="btn btn-primary">Editar</button>
+                                <a href="{{ url_for('ciudadesEditar', id=item['id']) }}" class="btn btn-primary">Editar</a>
                               </div>
                               <div class="col col-md-2">
-                                <button type="button" class="btn btn-danger">Eliminar</button>
+                                <a href="{{ url_for('ciudadesEliminar', id=item['id']) }}" class="btn btn-danger">Eliminar</a>
+                            </div>
                               </div>
                             </div>
                           </td>

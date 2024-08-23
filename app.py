@@ -47,13 +47,39 @@ def guardarCiudad():
     flash('Guardado exitoso', 'success')
 
     # redireccionar a la vista ciudades 
-    return redirect(url_for('ciudades'))
+    return redirect(url_for('ciudades_index'))
+
+@app.route('/ciudades-editar/<id>')
+def ciudadesEditar(id):
+    ciudaddao = CiudadDao()
+    return render_template('ciudades editar.html', ciudad=ciudaddao.getCiudadById(id))
+
+@app.route('/actualizar-ciudad', methods=['POST'])
+def actualizarCiudad():
+    id = request.form.get('txtIdCiudad')
+    descripcion = request.form.get('txtDescripcion').strip()
+
+    if descripcion == None or len(descripcion) == 0:
+        flash('No debe estar vacia la descripcion')
+        return redirect(url_for('ciudadesEditar', id=id))
+
+    # actualizar
+    ciudaddao = CiudadDao()
+    ciudaddao.updateCiudad(id, descripcion.upper())
+
+    return redirect(url_for('ciudades_index'))
 
 @app.route('/guardar-mascota', methods=['POST'])
 def guardarMascota():
     print(request.form)
     nombreMascota = request.form.get('txtNombreMascota')
     return f"Ya llego tu mascota <strong>{nombreMascota}</strong> al servidor"
+
+@app.route('/ciudades-eliminar/<id>')
+def ciudadesEliminar(id):
+    ciudaddao = CiudadDao()
+    ciudaddao.deleteCiudad(id)
+    return redirect(url_for('ciudades_index'))
 
 # se pregunta por el proceso principal
 if __name__=='__main__':
